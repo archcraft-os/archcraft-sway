@@ -1,0 +1,2 @@
+# archcraft-sway
+// Configuration : Sway
