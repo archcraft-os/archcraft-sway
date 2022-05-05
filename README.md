@@ -2,7 +2,7 @@
 
 [![Wayfire Main Video](screenshots/sway_6.png)](https://youtu.be/ASlQcf8Jc0I)
 
-<p align="center">The ultimate Sway configuration (A Desktop Environment Like Experience)</p>
+<p align="center">The ultimate Sway configuration (A tiling Wayland compositor and a drop-in replacement for the i3 window manager for X11)</p>
 
 ---
 
@@ -29,7 +29,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
   - Install the following programs on your computer: `sway` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi`  `kanshi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `wlogout` `thunar` `geany` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit`
   - After installing programs above, Create sway directory in **`~/.config`** : `mkdir -p ~/.config/sway`
   - Copy Everything from _dotfiles_ to **`~/.config/sway`** : `cp -r ./dotfiles/* ~/.config/sway/` 
-  - Logout and login to your amazingly configured Wayfire.
+  - Logout and login to your amazingly configured Sway.
 
 > GTK themes, icons and cursor-theme are provided in **`gtk`** directory.
 
