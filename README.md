@@ -110,7 +110,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 | --- | --- |
 |![sway](screenshots/sway_3.png)|![sway](screenshots/sway_4.png)|
 
-| Runnig thunar, geany and ranger | Running vim, ncmpcpp and ranger |
+| Running thunar, geany and ranger | Running vim, ncmpcpp and ranger |
 | --- | --- |
 |![sway](screenshots/sway_5.png)|![sway](screenshots/sway_6.png)|
 
