@@ -24,7 +24,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 ## Installation
 - Get the files from : [Ko-fi :coffee:](https://ko-fi.com/s/10f2e87af3)
 - Extract The file **sway.tar.gz** with : `tar -xzvf sway.tar.gz`
-- If you are using **`Archcraft`** as your OS, You can just install the provided package with : `sudo pacman -U archcraft-sway-1.0-2-any.pkg.tar.zst`
+- If you are using **`Archcraft`** as your OS, You can just install the provided package with : `sudo pacman -U archcraft-sway-1.0-3-any.pkg.tar.zst`
 - If you want to install this setup on _Arch Linux_ or on any _other distro_, follow the points below :
   - Install the following programs on your computer: `sway` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi`  `kanshi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `wlogout` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland`
   - After installing programs above, Create sway directory in **`~/.config`** : `mkdir -p ~/.config/sway`
@@ -32,6 +32,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
   - Logout and login to your amazingly configured Sway WM.
 
 > GTK themes, icons and cursor-theme are provided in **`gtk`** directory.
+> Fonts are provided in **`fonts`** directory.
 
 ## Config Structure
 ```
@@ -125,4 +126,8 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 
 ---
 
-**See also** : [`archcraft-wayfire`](https://github.com/archcraft-os/archcraft-wayfire)
+### See Also
+
+| [**`archcraft-river`**](https://github.com/archcraft-os/archcraft-river) | [**`archcraft-wayfire`**](https://github.com/archcraft-os/archcraft-wayfire) |
+| --- | --- |
+|[![Sway](https://raw.githubusercontent.com/archcraft-os/archcraft-river/main/screenshots/River_4.png)](https://github.com/archcraft-os/archcraft-river)|[![Wayfire](https://raw.githubusercontent.com/archcraft-os/archcraft-wayfire/main/screenshot.png)](https://github.com/archcraft-os/archcraft-wayfire)|
