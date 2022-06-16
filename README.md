@@ -37,7 +37,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 ## Config Structure
 ```
 ~/.config
-└── Sway              : Sway config directory
+└── sway              : Sway config directory
     ├── foot          : Terminal config
     ├── mako          : Notification daemon config
     │   └── icons     : Notification icons
@@ -128,6 +128,6 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 
 ### See Also
 
-| [**`archcraft-river`**](https://github.com/archcraft-os/archcraft-river) | [**`archcraft-wayfire`**](https://github.com/archcraft-os/archcraft-wayfire) |
-| --- | --- |
-|[![Sway](https://raw.githubusercontent.com/archcraft-os/archcraft-river/main/screenshots/River_4.png)](https://github.com/archcraft-os/archcraft-river)|[![Wayfire](https://raw.githubusercontent.com/archcraft-os/archcraft-wayfire/main/screenshot.png)](https://github.com/archcraft-os/archcraft-wayfire)|
+| [**`archcraft-river`**](https://github.com/archcraft-os/archcraft-river) | [**`archcraft-wayfire`**](https://github.com/archcraft-os/archcraft-wayfire) | [**`archcraft-hyprland`**](https://github.com/archcraft-os/archcraft-hyprland) |
+| --- | --- | --- |
+|[![River](https://raw.githubusercontent.com/archcraft-os/archcraft-river/main/screenshots/River_4.png)](https://github.com/archcraft-os/archcraft-river)|[![Wayfire](https://raw.githubusercontent.com/archcraft-os/archcraft-wayfire/main/screenshot.png)](https://github.com/archcraft-os/archcraft-wayfire)|[![Hyprland](https://raw.githubusercontent.com/archcraft-os/archcraft-hyprland/main/screenshots/dark/hypr_dark_2.png)](https://github.com/archcraft-os/archcraft-hyprland)|
