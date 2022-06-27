@@ -22,7 +22,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 - **Web Browser** : `Firefox`
 
 ## Installation
-- Get the files from : [Ko-fi :coffee:](https://ko-fi.com/s/10f2e87af3)
+- Get the files from : [Ko-fi :coffee:](https://ko-fi.com/s/10f2e87af3) <sup>[**`Why Paid`**](https://github.com/adi1090x/adi1090x/blob/master/WHY.md)</sup>
 - Extract The file **sway.tar.gz** with : `tar -xzvf sway.tar.gz`
 - If you are using **`Archcraft`** as your OS, You can just install the provided package with : `sudo pacman -U archcraft-sway-1.0-3-any.pkg.tar.zst`
 - If you want to install this setup on _Arch Linux_ or on any _other distro_, follow the points below :
