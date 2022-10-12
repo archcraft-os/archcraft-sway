@@ -24,7 +24,7 @@ Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window 
 ## Installation
 - Get the files from : [Ko-fi :coffee:](https://ko-fi.com/s/10f2e87af3) <sup>[**`Why Paid`**](https://github.com/adi1090x/adi1090x/blob/master/WHY.md)</sup>
 - Extract The file **sway.tar.gz** with : `tar -xzvf sway.tar.gz`
-- If you are using **`Archcraft`** as your OS, You can just install the provided package with : `sudo pacman -U archcraft-sway-1.0-3-any.pkg.tar.zst`
+- If you are using **`Archcraft`** as your OS, You can just install the provided package with : `sudo pacman -U archcraft-sway-1.0-4-any.pkg.tar.zst`
 - If you want to install this setup on _Arch Linux_ or on any _other distro_, follow the points below :
   - Install the following programs on your computer: `sway` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi`  `kanshi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `wlogout` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland`
   - After installing programs above, Create sway directory in **`~/.config`** : `mkdir -p ~/.config/sway`
