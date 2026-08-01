@@ -1,0 +1,98 @@
+##-- Resize ------------------------
+
+# resize window (you can also use the mouse for that)
+mode "Resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+Shift+r mode "Resize"
+
+##-- Move --------------------------
+
+# move window (you can also use the mouse for that)
+mode "Move" {
+    bindsym h move left 20px
+    bindsym j move down  20px
+    bindsym k move up 20px
+    bindsym l move right 20px
+
+    bindsym Left move left 20px
+    bindsym Down move down  20px
+    bindsym Up move up 20px
+    bindsym Right move right 20px
+
+	# Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+bindsym $mod+Shift+m mode "Move"
+
+##-- Gaps --------------------------
+
+# Gaps (inner, outer, local|global)
+set $mode_gaps Gaps: (o)uter, (i)nner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "$mode_gaps"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+##-- Opacity -----------------------
+
+set $mode_opacity Opacity: (+), (-), (0)
+mode "$mode_opacity" {
+    bindsym plus  opacity plus 0.1
+    bindsym minus opacity minus 0.1
+    bindsym 0     opacity set 1
+
+	# Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+o mode "default"
+}
+bindsym $mod+Shift+o mode "$mode_opacity"

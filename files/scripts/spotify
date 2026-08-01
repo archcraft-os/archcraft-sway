@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Spotify Song Info Script ---------------------------------
+
+spotify_status=`playerctl -p spotify status 2>/dev/null`
+md_cmd='playerctl -p spotify metadata'
+
+if [[ "$spotify_status" = 'Playing' ]]; then
+	if [[ "`$md_cmd title`" == 'Advertisement' ]]; then
+		echo -e '  Stupid Ads!'
+	else
+		echo -e "  $($md_cmd artist) - $($md_cmd title)"
+	fi
+elif [[ "$spotify_status" = 'Paused' ]]; then
+		echo -e "  $($md_cmd artist) - $($md_cmd title)"
+else
+	echo -e '󰎊 Spotify Offline!'
+fi

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Script for light/dark modes ------------------------------
+
+# Vars
+DIR="$HOME/.config/sway"
+STATE_FILE="$DIR/theme/.mode_state"
+if [[ ! -f "$STATE_FILE" ]]; then
+    echo "dark" > "$STATE_FILE"
+fi
+
+# Apply theme accordingly
+apply_mode() {
+	if [[ `cat "$STATE_FILE"` = "dark" ]]; then
+		"$DIR"/theme/theme.sh --light
+		echo "light" > "$STATE_FILE"
+	else
+		"$DIR"/theme/theme.sh --default
+		echo "dark" > "$STATE_FILE"
+	fi
+}
+
+# Info
+show_info() {
+	if [[ `cat "$STATE_FILE"` = "dark" ]]; then
+		echo -e "\ndark\noff"
+	else
+		echo -e "󰖨\nlight\non"
+	fi
+}
+
+# Main
+if [[ "$1" == '--toggle' ]]; then
+	apply_mode
+else
+	show_info
+fi

@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+
+## Export Environment Variables and Start Sway
+
+## Setting environment variables for wayland session
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+export XDG_CURRENT_SESSION=sway
+
+## GTK environment
+export TDESKTOP_DISABLE_GTK_INTEGRATION=1
+export CLUTTER_BACKEND=wayland
+export BEMENU_BACKEND=wayland
+
+## Firefox
+export MOZ_ENABLE_WAYLAND=1
+
+## Qt environment
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM=wayland-egl #error with apps xcb
+#export QT_WAYLAND_FORCE_DPI=physical #uncomment this to use monitor's DPI
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+## Elementary environment
+export ELM_DISPLAY=wl
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
+export ELM_ACCEL=opengl
+# export ELM_SCALE=1
+
+## SDL environment
+export SDL_VIDEODRIVER=wayland
+
+## Java environment
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# LibreOffice
+export SAL_USE_VCLPLUGIN=gtk3
+
+## Clutter
+export CLUTTER_BACKEND="wayland"
+
+## GDK
+export GDK_BACKEND="wayland,x11"
+
+export NO_AT_BRIDGE=1
+export WINIT_UNIX_BACKEND=wayland
+export DBUS_SESSION_BUS_ADDRESS
+export DBUS_SESSION_BUS_PID
+
+## Disable CSD
+export LD_PRELOAD=/usr/lib/libgtk-nocsd.so
+
+## All Virtual machines workarounds (is cause issues)
+#if systemd-detect-virt --quiet; then
+#    export WLR_NO_HARDWARE_CURSORS=1
+#fi
+
+## Virtualbox workarounds
+if [[ "$(systemd-detect-virt)" == "oracle" ]]; then
+    export WLR_NO_HARDWARE_CURSORS=1
+fi
+
+## Start Sway
+sleep 0.5
+
+if lspci -k | grep -P 'VGA|3D|Display' | grep -qw NVIDIA &&
+   lsmod | grep -qw nvidia; then
+    sway --unsupported-gpu
+else
+    sway
+fi

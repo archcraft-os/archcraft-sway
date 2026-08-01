@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Current Lockscreen ---------------------------------------
+
+DIR="$HOME/.config/sway"
+
+#bash "$DIR"/scripts/lockscreen
+hyprlock --config "$DIR"/hyprlock.conf &

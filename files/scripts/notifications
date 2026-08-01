@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Mako -----------------------------------------------------
+
+CONFIG="$HOME/.config/sway/mako/config"
+
+exec mako --config ${CONFIG}

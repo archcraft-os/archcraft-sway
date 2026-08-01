@@ -1,0 +1,30 @@
+##-- Output configuration ----------------
+
+## For more details read `man 5 sway-output`
+## You can get a list of output names with: swaymsg -t get_outputs
+
+## Set wallpaper on all monitors
+output * bg ~/.config/sway/wallpapers/wallpaper.jpg fill
+
+## Set wallpaper on specific monitors
+#output eDP-1    bg ~/.config/sway/wallpapers/wallpaper.jpg fill
+#output HDMI-A-1 bg ~/Pictures/wallpapers/wallpaper_2.jpg fill
+
+## Multiheads
+#~ Laptop screen (internal monitor), mode: 1920x1080
+#output eDP-1 resolution 1920x1080 position 0,0
+#~ External monitor, right of laptop screen, mode: 1920x1080
+#output HDMI-A-1 resolution 1920x1080 position 1920,0
+#~ And just like above (working) examples, you can setup your monitors here.
+
+## HiDPI
+#~ Internal monitor with default scale
+#output eDP-1 scale 1
+#~ External monitor with twice scale
+#output HDMI-A-1 scale 2
+
+## HiDPI Laptop
+#output eDP-1 mode 2944x1840@90Hz
+#output eDP-1 position 0,0
+#output eDP-1 scale 1.7
+#output eDP-1 scale_filter smart

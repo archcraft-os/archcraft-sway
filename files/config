@@ -1,0 +1,307 @@
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Sway Master configuration file (For Archcraft)
+
+##-- Mod Keys ----------------------------
+set $mod Mod4
+set $alt Mod1
+
+##-- Fonts (Global) ----------------------
+font pango:JetBrains Mono Medium 10
+
+##-- Config files ------------------------
+include ~/.config/sway/sway-idle
+include ~/.config/sway/sway-input
+include ~/.config/sway/sway-output
+include ~/.config/sway/sway-modes
+include ~/.config/sway/sway-theme
+
+##-- General Settings --------------------
+default_orientation horizontal
+swaybg_command swaybg
+swaynag_command swaynag
+workspace_layout default
+xwayland enable
+focus_follows_mouse yes
+floating_modifier $mod normal
+mouse_warping none
+popup_during_fullscreen smart
+workspace_auto_back_and_forth yes
+focus_on_window_activation smart
+show_marks yes
+
+##-- Variables ---------------------------
+set $alacritty ~/.config/sway/scripts/alacritty
+set $foot ~/.config/sway/scripts/foot
+set $kitty ~/.config/sway/scripts/kitty
+set $volume ~/.config/sway/scripts/volume
+set $backlight ~/.config/sway/scripts/brightness
+set $screenshot ~/.config/sway/scripts/screenshot
+set $lockscreen ~/.config/sway/scripts/current_lock
+set $colorpicker ~/.config/sway/scripts/colorpicker
+set $files thunar
+set $editor geany
+set $browser firefox
+
+set $rofi_bluetooth ~/.config/sway/scripts/rofi_bluetooth
+set $rofi_launcher ~/.config/sway/scripts/rofi_launcher
+set $rofi_music ~/.config/sway/scripts/rofi_mpd
+#set $rofi_music ~/.config/sway/scripts/rofi_spotify
+set $rofi_powermenu ~/.config/sway/scripts/rofi_powermenu
+set $rofi_runner ~/.config/sway/scripts/rofi_runner
+set $rofi_screenshot ~/.config/sway/scripts/rofi_screenshot
+set $rofi_network ~/.config/sway/scripts/rofi_network
+set $rofi_asroot ~/.config/sway/scripts/rofi_asroot
+
+set $open_in_alacritty alacritty --config-file ~/.config/sway/alacritty/alacritty.toml
+
+##-- Startup Programs --------------------
+exec_always ~/.config/sway/scripts/startup
+#exec_always ~/.config/sway/scripts/clamshell
+
+##-- Keybindings -------------------------
+
+# -- Terminal : alacritty --
+bindsym $mod+Return 			exec $alacritty
+bindsym $mod+Shift+Return 		exec $alacritty -f
+bindsym $mod+$alt+Return 		exec $alacritty -F
+
+# -- Terminal :foot --
+#bindsym $mod+Return 			exec $foot
+#bindsym $mod+Shift+Return 		exec $foot -f
+#bindsym $mod+$alt+Return 		exec $foot -s
+#bindsym $mod+t 				exec $foot -F
+
+# -- Terminal : kitty --
+#bindsym $mod+Return 			exec $kitty
+#bindsym $mod+Shift+Return 		exec $kitty -f
+#bindsym $mod+$alt+Return 		exec $kitty -F
+
+# -- GUI Apps --
+bindsym $mod+Shift+f 			exec $files
+bindsym $mod+Shift+e 			exec $editor
+bindsym $mod+Shift+w 			exec $browser
+
+# -- CLI Apps --
+bindsym $alt+Control+v 			exec --no-startup-id "$open_in_alacritty -e vim"
+bindsym $alt+Control+r 			exec --no-startup-id "$open_in_alacritty -e ranger"
+bindsym $alt+Control+h 			exec --no-startup-id "$open_in_alacritty -e htop"
+
+# -- Rofi --
+bindsym $alt+F1 				exec $rofi_launcher
+bindsym $alt+F2 				exec $rofi_runner
+bindsym $mod+d	 				exec $rofi_launcher
+bindsym $mod+r	 				exec $rofi_asroot
+bindsym $mod+n 					exec $rofi_network
+bindsym $mod+x 					exec $rofi_powermenu
+bindsym $mod+m 					exec $rofi_music
+bindsym $mod+s 					exec $rofi_screenshot
+bindsym $mod+b 					exec $rofi_bluetooth
+
+# -- Misc --
+bindsym $mod+p 					exec $colorpicker
+#bindsym $mod+n 				exec nm-connection-editor
+
+# -- Function keys --
+bindsym XF86MonBrightnessUp 	exec "$backlight --inc"
+bindsym XF86MonBrightnessDown 	exec "$backlight --dec"
+bindsym XF86AudioRaiseVolume 	exec "$volume --inc"
+bindsym XF86AudioLowerVolume 	exec "$volume --dec"
+bindsym XF86AudioMute 			exec "$volume --toggle"
+bindsym XF86AudioMicMute 		exec "$volume --toggle-mic"
+bindsym XF86AudioNext 			exec "mpc next"
+bindsym XF86AudioPrev 			exec "mpc prev"
+bindsym XF86AudioPlay 			exec "mpc toggle"
+bindsym XF86AudioStop 			exec "mpc stop"
+
+# -- Screenshots --
+bindsym Print 					exec "$screenshot --now"
+bindsym $alt+Print 				exec "$screenshot --in5"
+bindsym Shift+Print 			exec "$screenshot --in10"
+bindsym Control+Print 			exec "$screenshot --win"
+bindsym $mod+Print 				exec "$screenshot --area"
+
+# -- Lockscreen --
+bindsym $alt+Control+l 			exec "$lockscreen"
+
+## -- Sway --
+
+## Kill focused window
+##
+bindsym $mod+q kill
+bindsym $mod+c kill
+
+#------
+
+## Send Notification
+##
+set $send-notify exec --no-startup-id notify-send -u low -h string:x-canonical-private-synchronous:swayconfig
+
+## Splitting containers
+##
+## split in horizontal orientation
+bindsym $mod+h split horizontal, $send-notify 'Split Horizontally'
+## split in vertical orientation
+bindsym $mod+v split vertical, $send-notify 'Split Vertically'
+## toggle split
+bindsym $mod+g split toggle, $send-notify 'Split Mode'
+
+#------
+
+## Manipulating layout
+##
+## change container layout (stacked, tabbed, toggle split)
+## Set stacking layout
+bindsym $mod+Shift+s layout stacking, $send-notify 'Layout - Stacking'
+## Set tabbed layout
+bindsym $mod+Shift+t layout tabbed, $send-notify 'Layout - Tabbed'
+## Set default layout
+bindsym $mod+Shift+d layout default, $send-notify 'Layout - Default'
+## Toggle between stacking/tabbed/split:
+bindsym $mod+Shift+l layout toggle, $send-notify 'Cycling Layouts'
+## Toggle between horizontal/vertical:
+bindsym $mod+Shift+v layout toggle split, $send-notify 'Layout - Hor/Vert'
+## Toggle fullscreen
+bindsym $mod+f fullscreen toggle, $send-notify 'Toggled Fullscreen'
+## Toggle floating/tiling
+bindsym $mod+space floating toggle, $send-notify 'Toggled Floating Mode'
+
+#------
+
+## Focusing containers
+##
+## Sets focus to the nearest container in the given direction.
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+## Sets focus to the parent container of the current container.
+bindsym $mod+a focus parent
+## The opposite of `focus parent`, sets the focus to the last focused child container.
+bindsym $mod+z focus child
+## Automatically sets focus to the adjacent container.
+bindsym $mod+Tab focus next
+## Toggles focus between floating/tiling containers.
+bindsym $mod+Shift+space focus mode_toggle
+
+#------
+
+## Moving containers
+##
+## move focused window in the given direction.
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+## Move floating container to the center of all outputs (floating only)
+bindsym $mod+$alt+c move absolute position center
+## Move container to the current position of the cursor (floating only)
+bindsym $mod+$alt+p move position mouse
+
+#------
+
+## Resizing containers/windows
+##
+bindsym $mod+$alt+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+$alt+Down resize grow height 10 px or 10 ppt
+bindsym $mod+$alt+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+$alt+Right resize grow width 10 px or 10 ppt
+
+#------
+
+## Sticky floating windows (floating only)
+##
+bindsym $mod+o sticky toggle, $send-notify 'Toggled Sticky'
+
+#------
+
+## Changing border style
+##
+bindsym $mod+y border toggle, $send-notify 'Toggled Borders'
+
+#------
+
+## Scratchpad
+##
+## Make the currently focused window a scratchpad
+bindsym $mod+minus move scratchpad, $send-notify 'Scratchpad'
+## Show the first scratchpad window
+bindsym $mod+Shift+minus scratchpad show
+
+#------
+
+## reload the configuration file
+bindsym $mod+Shift+c reload, $send-notify 'Configuration Reloaded!'
+## quit sway session
+bindsym $mod+Shift+q exit
+
+#------
+
+## Changing (named) workspaces/moving to workspaces
+##
+## Define names for default workspaces for which we configure key bindings later on.
+## We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+## switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+## move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+##-- Rules -------------------------------
+#assign [app_id="foot"] → workspace number 1
+#assign [class="firefox"] → workspace number 2
+#assign [app_id="thunar"] → workspace number 3
+#assign [app_id="geany"] → workspace number 4
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [app_id="kitty-full"] fullscreen enable
+for_window [app_id="alacritty-float|foot-float|kitty-float"] floating enable
+for_window [app_id="catfish|yad|nm-connection-editor|pavucontrol"] floating enable
+for_window [app_id="xfce-polkit|kvantummanager|qt5ct|qt6ct"] floating enable
+for_window [app_id="io.calamares.calamares"] floating enable
+for_window [app_id="io.archcraft.Welcome"] floating enable
+for_window [app_id="io.archcraft.Help"] floating enable
+for_window [app_id="thunar" title="Rename.*"] floating enable
+for_window [app_id="thunar" title="File Operation Progress.*"] floating enable
+for_window [app_id="thunar" title="Confirm to replace.*"] floating enable
+for_window [title="Archcraft Installer"] floating enable
+for_window [app_id="viewnior|gimp"] floating enable
+for_window [class="Yad|feh|Gpicview|MPlayer"] floating enable
+for_window [class="VirtualBox Manager|qemu|Qemu-system-x86_64"] floating enable
+
+##-- Misc --------------------------------
+include /etc/sway/config.d/*

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Import Current Theme
+DIR="$HOME/.config/sway"
+RASI="$DIR/rofi/askpass.rasi"
+
+# Rofi text dialog to get password
+rofi -dmenu \
+     -password \
+     -i \
+     -p "Root" \
+     -theme ${RASI}

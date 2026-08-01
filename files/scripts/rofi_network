@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+
+# sway directory
+DIR="$HOME/.config/sway"
+
+# Run networkmanager_dmenu with sway config
+networkmanager_dmenu --config "$DIR"/rofi/networkmenu_config.ini

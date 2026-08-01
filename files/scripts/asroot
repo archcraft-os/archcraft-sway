@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# directory
+DIR="$HOME/.config/sway"
+
+# rofi sudo askpass helper
+export SUDO_ASKPASS="$DIR"/scripts/rofi_askpass
+
+# execute the application
+sudo -E -A $1

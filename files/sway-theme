@@ -1,0 +1,44 @@
+##-- Style -------------------------------
+default_border pixel 2
+default_floating_border pixel 2
+smart_borders off
+
+titlebar_border_thickness 2
+titlebar_padding 6 6
+title_align center
+
+gaps inner 10
+gaps outer 0
+
+##-- Colors ------------------------------
+set $sway_cl_col_bg #080809
+set $sway_cl_col_fg #E3E4E5
+set $sway_cl_col_in #fec418
+set $sway_cl_col_afoc #06b6ef
+set $sway_cl_col_ifoc #48b685
+set $sway_cl_col_ufoc #1b1b1f
+set $sway_cl_col_urgt #ef6155
+set $sway_cl_col_phol #080809
+
+# class                  border              backgr.             text              indicator         child_border
+client.focused           $sway_cl_col_afoc   $sway_cl_col_afoc   $sway_cl_col_bg   $sway_cl_col_in   $sway_cl_col_afoc
+client.focused_inactive  $sway_cl_col_ifoc   $sway_cl_col_ifoc   $sway_cl_col_bg   $sway_cl_col_in   $sway_cl_col_ifoc
+client.unfocused         $sway_cl_col_ufoc   $sway_cl_col_ufoc   $sway_cl_col_fg   $sway_cl_col_in   $sway_cl_col_ufoc
+client.urgent            $sway_cl_col_urgt   $sway_cl_col_urgt   $sway_cl_col_fg   $sway_cl_col_in   $sway_cl_col_urgt
+client.placeholder       $sway_cl_col_phol   $sway_cl_col_phol   $sway_cl_col_fg   $sway_cl_col_in   $sway_cl_col_phol
+client.background        $sway_cl_col_bg
+
+##-- Gtk themes ------------------------------
+set $sway_gtk_theme Sweet-Ambar-Blue
+set $sway_icon_theme Ars
+set $sway_cursor_theme Sweet
+set $sway_fonts Noto Sans 9
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme    $sway_gtk_theme
+    gsettings set $gnome-schema icon-theme   $sway_icon_theme
+    gsettings set $gnome-schema cursor-theme $sway_cursor_theme
+    gsettings set $gnome-schema font-name    $sway_fonts
+}

@@ -1,0 +1,27 @@
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Colors configuration -------------------------------------
+
+[colors.primary]
+background = "#080809"
+foreground = "#E3E4E5"
+
+[colors.normal]
+black   = "#2f1e2e"
+red     = "#ef6155"
+green   = "#48b685"
+yellow  = "#fec418"
+blue    = "#06b6ef"
+magenta = "#815ba4"
+cyan    = "#5bc4bf"
+white   = "#a39e9b"
+
+[colors.bright]
+black   = "#776e71"
+red     = "#ef6155"
+green   = "#48b685"
+yellow  = "#fec418"
+blue    = "#06b6ef"
+magenta = "#815ba4"
+cyan    = "#5bc4bf"
+white   = "#e7e9db"

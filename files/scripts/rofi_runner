@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+
+# Import Current Theme
+DIR="$HOME/.config/sway"
+RASI="$DIR/rofi/runner.rasi"
+
+# Run
+rofi \
+    -show run \
+	-theme ${RASI}

@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Autostart Programs ---------------------------------------
+
+## Helpers
+run() {
+	if ! pgrep -x "$1" >/dev/null 2>&1; then
+		"$@" &
+	fi
+}
+
+run_bg() {
+	("$@" >/dev/null 2>&1 &)
+}
+
+restart() {
+	local proc="$1"
+	shift
+
+	if pgrep -x "$proc" >/dev/null 2>&1; then
+		pkill -TERM -x "$proc"
+		while pgrep -x "$proc" >/dev/null 2>&1; do
+			sleep 0.1
+		done
+	fi
+
+	"$@" >/dev/null 2>&1 &
+}
+
+## Core UI Elements
+restart waybar ~/.config/sway/scripts/statusbar
+restart mako   ~/.config/sway/scripts/notifications
+
+## Applets & Services
+run nm-applet --indicator
+run mpd
+
+## Polkit
+#run /usr/lib/xfce-polkit/xfce-polkit
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/lib/xfce-polkit/xfce-polkit &
+fi
+
+## Welcome-App-Run-Once
+/usr/share/archcraft/welcome/run.py &
+sed -i -e '/## Welcome-App-Run-Once/Q' "$HOME"/.config/sway/scripts/startup
+
+exit 0

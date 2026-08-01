@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Waybar ---------------------------------------------------
+
+CONFIG="$HOME/.config/sway/waybar/config"
+STYLE="$HOME/.config/sway/waybar/style.css"
+
+exec waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2026 Aditya Shakya <adi1090x@gmail.com>
+##
+## Kitty ----------------------------------------------------
+
+# Directory
+DIR="$HOME/.config/sway"
+CONFIG="$DIR/kitty/kitty.conf"
+
+# Virtualbox workarounds
+cmd=(kitty)
+if [[ "$(systemd-detect-virt)" == "oracle" ]]; then
+    cmd=(env LIBGL_ALWAYS_SOFTWARE=1 kitty)
+fi
+
+if [[ "$1" == '-f' ]]; then
+	"${cmd[@]}" \
+		--class 'kitty-float' \
+		--config "$CONFIG"
+elif [[ "$1" == '-F' ]]; then
+	"${cmd[@]}" \
+		--class 'kitty-fullscreen' \
+		--config "$CONFIG" \
+		--start-as fullscreen \
+		--override 'window_padding_width=30' \
+		--override 'font_size=14' \
+		--override 'background_opacity=0.95'
+else
+	"${cmd[@]}" --config "$CONFIG" ${@}
+fi
