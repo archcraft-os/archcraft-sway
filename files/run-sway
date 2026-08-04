@@ -52,9 +52,6 @@ export WINIT_UNIX_BACKEND=wayland
 export DBUS_SESSION_BUS_ADDRESS
 export DBUS_SESSION_BUS_PID
 
-## Disable CSD
-export LD_PRELOAD=/usr/lib/libgtk-nocsd.so
-
 ## All Virtual machines workarounds (is cause issues)
 #if systemd-detect-virt --quiet; then
 #    export WLR_NO_HARDWARE_CURSORS=1
@@ -70,7 +67,7 @@ sleep 0.5
 
 if lspci -k | grep -P 'VGA|3D|Display' | grep -qw NVIDIA &&
    lsmod | grep -qw nvidia; then
-    sway --unsupported-gpu
+    exec /usr/bin/archcraft-session sway --unsupported-gpu
 else
-    sway
+    exec /usr/bin/archcraft-session sway
 fi

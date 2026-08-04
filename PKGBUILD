@@ -2,7 +2,7 @@
 
 pkgname=archcraft-sway-free
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Sway Configurations for Archcraft"
 arch=('any')
 url="https://github.com/archcraft-os/archcraft-sway"

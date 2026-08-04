@@ -4,6 +4,7 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
+Target = archcraft-sway-free
 Target = sway
 
 [Action]
