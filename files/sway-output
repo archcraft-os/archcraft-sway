@@ -28,3 +28,8 @@ output * bg ~/.config/sway/wallpapers/wallpaper.jpg fill
 #output eDP-1 position 0,0
 #output eDP-1 scale 1.7
 #output eDP-1 scale_filter smart
+
+## Tearing
+#output eDP-1 allow_tearing yes
+#output * max_render_time off
+

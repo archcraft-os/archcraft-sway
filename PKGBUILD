@@ -2,12 +2,12 @@
 
 pkgname=archcraft-sway-free
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sway Configurations for Archcraft"
 arch=('any')
 url="https://github.com/archcraft-os/archcraft-sway"
 license=('GPL3')
-depends=('sway' 'swaybg' 'swayidle' 'swaylock' 'xorg-xwayland'
+depends=('sway' 'swaybg' 'swayidle' 'swaylock' 'xorg-xwayland' 'sov'
 		'mako' 'waybar' 'rofi' 'foot' 'hyprpicker' 'hyprlock'
 		'grim' 'slurp' 'imagemagick' 'wl-clipboard' 'wf-recorder'
 		'mpv' 'pulsemixer' 'light' 'pastel' 'python-pywal' 'playerctl'
@@ -44,6 +44,7 @@ package() {
 	cp -r "$srcdir"/mako 			"$_wcdir"
 	cp -r "$srcdir"/rofi 			"$_wcdir"
 	cp -r "$srcdir"/scripts 		"$_wcdir"
+	cp -r "$srcdir"/sov 			"$_wcdir"
 	cp -r "$srcdir"/theme 			"$_wcdir"
 	cp -r "$srcdir"/wallpapers 		"$_wcdir"
 	cp -r "$srcdir"/waybar 			"$_wcdir"

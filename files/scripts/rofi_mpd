@@ -78,7 +78,7 @@ run_rofi() {
 }
 
 # Execute Command
-iDIR="$HOME/.config/sway/mako/icons"
+iDIR="$DIR/mako/icons"
 notify_song="notify-send -h string:x-canonical-private-synchronous:sys-notify-song -u low -i ${iDIR}/music.png"
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then

@@ -75,17 +75,19 @@
 
 	// waybar-custom
     "custom/themes": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "$HOME/.config/sway/theme/theme.sh --pywal",
-        "on-click-right": "$HOME/.config/sway/theme/theme.sh --default",
+         "format": "",
+         "tooltip": true,
+         "tooltip-format": "Left click to apply random theme.\n\nRight click to set default theme.",
+         "on-click": "$HOME/.config/sway/theme/theme.sh --pywal",
+         "on-click-right": "$HOME/.config/sway/theme/theme.sh --default",
     },
 
     "custom/lightmode": {
          "exec": "$HOME/.config/sway/waybar/lightmode",
          "interval": 1,
          "format": "{}",
-         "tooltip": false,
+         "tooltip": true,
+         "tooltip-format": "Left click to switch to 'Light Mode'.\n\nRight click to switch back to 'Default Mode'.",
          "on-click": "$HOME/.config/sway/waybar/lightmode --toggle",
     },
 

@@ -10,6 +10,7 @@ set $alt Mod1
 font pango:JetBrains Mono Medium 10
 
 ##-- Config files ------------------------
+include /etc/sway/config.d/*
 include ~/.config/sway/sway-idle
 include ~/.config/sway/sway-input
 include ~/.config/sway/sway-output
@@ -54,6 +55,9 @@ set $rofi_network ~/.config/sway/scripts/rofi_network
 set $rofi_asroot ~/.config/sway/scripts/rofi_asroot
 
 set $open_in_alacritty alacritty --config-file ~/.config/sway/alacritty/alacritty.toml
+
+##-- Sway Overview (sov) -----------------
+exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -s ~/.config/sway/sov -t 500 --holdkey=65515
 
 ##-- Startup Programs --------------------
 exec_always ~/.config/sway/scripts/startup
@@ -256,17 +260,40 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+## switch to workspace (with sov)
+bindsym --no-repeat $mod+1 workspace number $ws1; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+2 workspace number $ws2; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+3 workspace number $ws3; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+4 workspace number $ws4; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+5 workspace number $ws5; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+6 workspace number $ws6; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+7 workspace number $ws7; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+8 workspace number $ws8; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+9 workspace number $ws9; exec "echo 1 > /tmp/sovpipe"
+bindsym --no-repeat $mod+0 workspace number $ws10; exec "echo 1 > /tmp/sovpipe"
+
+bindsym --release $mod+1 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+2 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+3 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+4 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+5 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+6 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+7 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+8 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+9 exec "echo 0 > /tmp/sovpipe"
+bindsym --release $mod+0 exec "echo 0 > /tmp/sovpipe"
+
 ## switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+#bindsym $mod+1 workspace number $ws1
+#bindsym $mod+2 workspace number $ws2
+#bindsym $mod+3 workspace number $ws3
+#bindsym $mod+4 workspace number $ws4
+#bindsym $mod+5 workspace number $ws5
+#bindsym $mod+6 workspace number $ws6
+#bindsym $mod+7 workspace number $ws7
+#bindsym $mod+8 workspace number $ws8
+#bindsym $mod+9 workspace number $ws9
+#bindsym $mod+0 workspace number $ws10
 
 ## move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -302,6 +329,3 @@ for_window [title="Archcraft Installer"] floating enable
 for_window [app_id="viewnior|gimp"] floating enable
 for_window [class="Yad|feh|Gpicview|MPlayer"] floating enable
 for_window [class="VirtualBox Manager|qemu|Qemu-system-x86_64"] floating enable
-
-##-- Misc --------------------------------
-include /etc/sway/config.d/*

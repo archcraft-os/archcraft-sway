@@ -19,10 +19,9 @@ export BEMENU_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 
 ## Qt environment
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_QPA_PLATFORM=wayland-egl #error with apps xcb
-#export QT_WAYLAND_FORCE_DPI=physical #uncomment this to use monitor's DPI
+export QT_QPA_PLATFORM="wayland;xcb"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 ## Elementary environment
@@ -41,16 +40,26 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # LibreOffice
 export SAL_USE_VCLPLUGIN=gtk3
 
-## Clutter
-export CLUTTER_BACKEND="wayland"
-
 ## GDK
-export GDK_BACKEND="wayland,x11"
+export GDK_BACKEND="wayland,x11,*"
 
 export NO_AT_BRIDGE=1
 export WINIT_UNIX_BACKEND=wayland
+
+# Re-export DBus session variables
 export DBUS_SESSION_BUS_ADDRESS
 export DBUS_SESSION_BUS_PID
+
+## NVIDIA Specific (enable if your system has Nvidia GPU)
+#if lspci -k | grep -P 'VGA|3D|Display' | grep -qw NVIDIA &&
+#   lsmod | grep -qw nvidia; then
+#	export GBM_BACKEND="nvidia-drm"
+#	export __GLX_VENDOR_LIBRARY_NAME="nvidia"
+#	export LIBVA_DRIVER_NAME="nvidia"
+#	export __GL_GSYNC_ALLOWED=""
+#	export __GL_VRR_ALLOWED=""
+#	export AQ_NO_ATOMIC="1"
+#fi
 
 ## All Virtual machines workarounds (is cause issues)
 #if systemd-detect-virt --quiet; then
@@ -63,6 +72,7 @@ if [[ "$(systemd-detect-virt)" == "oracle" ]]; then
 fi
 
 ## Start Sway
+# Small delay to allow the session environment to settle
 sleep 0.5
 
 if lspci -k | grep -P 'VGA|3D|Display' | grep -qw NVIDIA &&
